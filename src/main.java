@@ -11,6 +11,19 @@ public class main {
         // 設置 物件
         player player = new player();
         event RD = new event();
+        aaentity mobs = new aaentity();
+
+        // 初始化/玩家屬性
+        player.HP = 20;
+        player.HP_max = player.HP;
+        player.MP = 10;
+        player.MP_max = player.MP;
+        player.Damage = 1;
+        player.hit = 0;
+        player.Defense = 1;
+        player.EXP = 0;
+        player.EXP_max = 100;
+        player.Gold = 0;
 
         // 設置玩家名稱
         while (player_survive) {
@@ -40,28 +53,26 @@ public class main {
             }
             System.out.println("\n" + "你的名子是 : " + player.name + "\n");
 
-            // 初始化/玩家屬性
-            player.HP = 20;
-            player.HP_max = player.HP;
-            player.MP = 10;
-            player.MP_max = player.MP;
-            player.Damage = 1;
-            player.hit = 0;
-            player.Defense = 1;
-            player.EXP = 0;
-            player.EXP_max = 100;
-            player.Gold = 0;
-
+            mob mob = new mob();
             // 事件偵測
+            RD.info = 0;
             RD.info_your();
-            while (RD.info == 0 || RD.info == 1) {
+            while (RD.info == 0 || RD.info == 1 || RD.info == 2 || RD.info == 3) {
+                RD.info_your();
                 if (RD.info == 1) {
                     player.list();
                     TimeUnit.SECONDS.sleep(3);
+                } else if (RD.info == 2) {
+
+                } else if (RD.info == 3) {
+                    player_survive = false;
+                    RD.info = 1000;
                 }
             }
             // 結束遊戲
-
+            if (RD.HP <= 0) {
+                player_survive = false;
+            }
             break;
         }
     }

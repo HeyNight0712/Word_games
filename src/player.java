@@ -24,7 +24,6 @@ public class player {
     public int Gold;
 
     // 呼叫事件
-    event event = new event();
 
     // 輸入名子
     // 玩家資訊

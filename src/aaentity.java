@@ -1,26 +1,26 @@
 import java.util.Scanner;
 
-public class entity {
+public class aaentity {
     // 實體 數值
 
     public String name = "None";
 
-    public int HP;
-    public int HP_max;
+    public static int HP;
+    public static int HP_max;
 
-    public int MP;
-    public int MP_max;
+    public static int MP;
+    public static int MP_max;
 
-    public int Damage;
-    public int hit;
+    public static int Damage;
+    public static int hit;
 
-    public int Defense;
+    public static int Defense;
 
-    public int LV;
-    public int EXP;
-    public int EXP_max;
+    public static int LV;
+    public static int EXP;
+    public static int EXP_max;
 
-    public int Gold;
+    public static int Gold;
 
     // 怪物資訊
     public void moblist() {
@@ -37,6 +37,22 @@ public class entity {
     // 遊戲內狀態
     public void pvp_list() {
         System.out.println(" 『 " + LV + " 』 " + name + " :");
+    }
+
+    mob mob = new mob();
+
+    public void mob() {
+        name = mob.name;
+        LV = mob.LV;
+        HP = mob.HP;
+        HP_max = mob.HP_max;
+        MP = mob.MP;
+        MP_max = mob.MP_max;
+        Damage = mob.Damage;
+        hit = mob.hit;
+        Defense = mob.Defense;
+        EXP = mob.EXP;
+        Gold = mob.Gold;
     }
 
 }
