@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import com.google.gson.JsonObject;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class skill {
     static String info_system = "【後台】 ";
@@ -55,6 +56,7 @@ public class skill {
         } else {
             System.out.println(info_system + "- 讀取 技能_NPC");
         }
+        TimeUnit.SECONDS.sleep(1);
         // getNPC1Talk();
         // getNPC2Talk();
         // getNPC3Talk();

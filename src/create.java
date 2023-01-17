@@ -8,6 +8,8 @@ import mobs.mobs;
 import java.io.File;
 import org.json.simple.JSONObject;
 import java.io.FileWriter;
+import java.util.concurrent.TimeUnit;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,10 +20,28 @@ public class create {
     static events event = new events();
     static mobs mobs = new mobs();
 
-    public static void main(String[] args) throws Exception {
+    public static void read() throws Exception {
         // 這裡之後會歸入 新檔案
         System.out.println("偵測檔案");
         System.out.println("====================");
+        config();
+        equip.create_file();
+        skill.create_file();
+        mobs.create_file();
+        System.out.println("====================");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("確認完畢" + "\n");
+        // event.Search();
+        // 寫來備註用
+        // 隨機 武器商人 npc / 對話
+        // equip.random_npc();
+        // 隨機抽取生物
+        // mobs.random_npc();
+        // 抽取剛剛生物的 對話 1~4
+        // mobs.getmobTalk();
+    }
+
+    private static void config() throws Exception {
         File configDir = new File("config");
         if (!configDir.exists()) {
             configDir.mkdir();
@@ -29,27 +49,6 @@ public class create {
         } else {
             System.out.println(info_system + "- 讀取 config");
         }
-
-        equip.create_file();
-        skill.create_file();
-        mobs.create_file();
-        System.out.println("====================");
-        System.out.println("讀取完畢" + "\n");
-
-        mobs.random_npc();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        mobs.getNPC1Talk();
-        // event.Search();
-        // 寫來備註用
-        // 隨機 武器商人 npc / 對話
-        // equip.random_npc();
+        TimeUnit.SECONDS.sleep(1);
     }
 }

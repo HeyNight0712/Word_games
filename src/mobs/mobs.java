@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import com.google.gson.JsonObject;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class mobs {
     static String info_system = "【後台】 ";
@@ -90,6 +91,7 @@ public class mobs {
         } else {
             System.out.println(info_system + "- 讀取 生物_mobs");
         }
+        TimeUnit.SECONDS.sleep(1);
         // getNPC1Talk();
         // getNPC2Talk();
         // getNPC3Talk();
@@ -102,12 +104,12 @@ public class mobs {
         Random rand = new Random();
         talktype = rand.nextInt(3) + 1;
         System.out.println(talktype);
-        getNPC1Talk();
+        getmobTalk();
 
     }
 
-    // NPC1 隨機對話
-    public void getNPC1Talk() throws Exception {
+    // mob1 隨機對話
+    public void getmobTalk() throws Exception {
         Gson gson = new Gson();
         FileReader reader = new FileReader("config/mobs.json");
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
@@ -119,6 +121,19 @@ public class mobs {
         int talkNumber = new Random().nextInt(4) + 1;
         String talk = player.get("talk" + talkNumber).getAsString();
         System.out.println(" " + talk);
+        System.out.println("----------");
+    }
+
+    // NPC1 隨機對話
+    public void getmobInfo() throws Exception {
+        Gson gson = new Gson();
+        FileReader reader = new FileReader("config/mobs.json");
+        JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+        int mobNumber = new Random().nextInt(3) + 1;
+        JsonObject player = jsonObject.getAsJsonObject("mob" + talktype);
+        String name = player.get("name").getAsString();
+        System.out.println("----------");
+        System.out.println(name + ":");
         System.out.println("----------");
     }
 }
