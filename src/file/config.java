@@ -1,24 +1,20 @@
+package file;
+
 import java.io.File;
 import org.json.simple.JSONObject;
 
-import npc.equip;
-import npc.skill;
-import mobs.mobs;
 import data.player;
 
-import java.io.File;
-import org.json.simple.JSONObject;
 import java.io.FileWriter;
 import java.util.concurrent.TimeUnit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class create {
+public class config {
     static String info_system = "【後台】 ";
-    static equip equip = new equip();
-    static skill skill = new skill();
-    static events event = new events();
+    static equip_shop equip = new equip_shop();
+    static skill_shop skill = new skill_shop();
     static mobs mobs = new mobs();
     static player player = new player();
 
@@ -33,7 +29,7 @@ public class create {
         player.restart();
         System.out.println("====================");
         System.out.println("確認中" + "\n");
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("確認完畢" + "\n");
         // event.Search();
         // 寫來備註用

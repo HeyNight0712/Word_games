@@ -22,7 +22,7 @@ public class monster {
 
     // 屬性輸出
     public void info() {
-        System.out.println(name + ":");
+        System.out.println("\n" + name + ":");
         System.out.println("----------");
         System.out.println("HP - " + HP + " / " + HP_max);
         System.out.println("MP - " + MP + " / " + MP_max);

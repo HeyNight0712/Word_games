@@ -1,4 +1,4 @@
-package mobs;
+package file;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -120,10 +120,9 @@ public class mobs {
         JsonObject player = jsonObject.getAsJsonObject("mob" + talktype);
         String name = player.get("name").getAsString();
         System.out.println("----------");
-        System.out.println(name + ":");
         int talkNumber = new Random().nextInt(4) + 1;
         String talk = player.get("talk" + talkNumber).getAsString();
-        System.out.println(" " + talk);
+        System.out.println(name + ": " + talk);
         System.out.println("----------");
     }
 

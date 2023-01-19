@@ -1,4 +1,4 @@
-package npc;
+package file;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,7 +8,7 @@ import java.io.FileReader;
 import com.google.gson.JsonObject;
 import java.util.Random;
 
-public class skill {
+public class skill_shop {
     static String info_system = "【後台】 ";
 
     // 讀取是否有檔案
@@ -76,11 +76,10 @@ public class skill {
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
         JsonObject player = jsonObject.getAsJsonObject("NPC" + talktype);
         String name = player.get("name").getAsString();
-        System.out.println(name + ":");
         System.out.println("----------");
         int talkNumber = new Random().nextInt(4) + 1;
         String talk = player.get("talk" + talkNumber).getAsString();
-        System.out.println(" " + talk);
+        System.out.println(name + ": " + talk);
         System.out.println("----------");
     }
 }

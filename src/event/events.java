@@ -1,22 +1,26 @@
+package event;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import data.monster;
 import data.player;
-import mobs.mobs;
-import npc.equip;
-import npc.skill;
+import file.equip_shop;
+import file.mobs;
+import file.skill_shop;
 
 public class events {
     // 資訊
     public static String info_system = "【系統】 ";
     // 敘述
     static String info_move = "移動中";
-    static equip equip = new equip();
-    static skill skill = new skill();
+    static equip_shop equip = new equip_shop();
+    static skill_shop skill = new skill_shop();
 
     mobs mobs = new mobs();
+    attack attack = new attack();
+    round round = new round();
     String Random;
 
     // 玩家名稱
@@ -77,7 +81,7 @@ public class events {
         if (Random.equals("戰鬥")) {
             mobs.random_npc();
             System.out.println(info_system + "遇到 : " + monster.name);
-
+            round.round_set();
         } else if (Random.equals("營火")) {
             System.out.println(info_system + "找到休息區域");
 
