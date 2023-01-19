@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import npc.equip;
 import npc.skill;
 import mobs.mobs;
+import data.player;
 
 import java.io.File;
 import org.json.simple.JSONObject;
@@ -19,6 +20,7 @@ public class create {
     static skill skill = new skill();
     static events event = new events();
     static mobs mobs = new mobs();
+    static player player = new player();
 
     public static void read() throws Exception {
         // 這裡之後會歸入 新檔案
@@ -28,8 +30,10 @@ public class create {
         equip.create_file();
         skill.create_file();
         mobs.create_file();
+        player.restart();
         System.out.println("====================");
-        TimeUnit.SECONDS.sleep(1);
+        System.out.println("確認中" + "\n");
+        TimeUnit.SECONDS.sleep(2);
         System.out.println("確認完畢" + "\n");
         // event.Search();
         // 寫來備註用
@@ -49,6 +53,5 @@ public class create {
         } else {
             System.out.println(info_system + "- 讀取 config");
         }
-        TimeUnit.SECONDS.sleep(1);
     }
 }

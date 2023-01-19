@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import com.google.gson.JsonObject;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class equip {
     static String info_system = "【後台】 ";
@@ -56,61 +55,26 @@ public class equip {
         } else {
             System.out.println(info_system + "- 讀取 商人_NPC");
         }
-        TimeUnit.SECONDS.sleep(1);
         // getNPC1Talk();
         // getNPC2Talk();
         // getNPC3Talk();
     }
 
+    int talktype;
+
     // 隨機NPC
     public void random_npc() throws Exception {
         Random rand = new Random();
-        int talktype = rand.nextInt(3);
-        if (talktype == 0) {
-            getNPC1Talk();
-        } else if (talktype == 1) {
-            getNPC2Talk();
-        } else {
-            getNPC3Talk();
-        }
+        talktype = rand.nextInt(3) + 1;
+        getNPCTalk();
     }
 
     // NPC1 隨機對話
-    public void getNPC1Talk() throws Exception {
+    public void getNPCTalk() throws Exception {
         Gson gson = new Gson();
         FileReader reader = new FileReader("config/equip_npc.json");
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-        JsonObject player = jsonObject.getAsJsonObject("NPC1");
-        String name = player.get("name").getAsString();
-        System.out.println("----------");
-        System.out.println(name + ":");
-        int talkNumber = new Random().nextInt(4) + 1;
-        String talk = player.get("talk" + talkNumber).getAsString();
-        System.out.println(" " + talk);
-        System.out.println("----------");
-    }
-
-    // NPC2 隨機對話
-    public void getNPC2Talk() throws Exception {
-        Gson gson = new Gson();
-        FileReader reader = new FileReader("config/equip_npc.json");
-        JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-        JsonObject player = jsonObject.getAsJsonObject("NPC2");
-        String name = player.get("name").getAsString();
-        System.out.println("----------");
-        System.out.println(name + ":");
-        int talkNumber = new Random().nextInt(4) + 1;
-        String talk = player.get("talk" + talkNumber).getAsString();
-        System.out.println(" " + talk);
-        System.out.println("----------");
-    }
-
-    // NPC3 隨機對話
-    public void getNPC3Talk() throws Exception {
-        Gson gson = new Gson();
-        FileReader reader = new FileReader("config/equip_npc.json");
-        JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-        JsonObject player = jsonObject.getAsJsonObject("NPC3");
+        JsonObject player = jsonObject.getAsJsonObject("NPC" + talktype);
         String name = player.get("name").getAsString();
         System.out.println("----------");
         System.out.println(name + ":");

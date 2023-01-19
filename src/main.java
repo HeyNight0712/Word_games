@@ -1,16 +1,14 @@
-import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 import mobs.mobs;
 import npc.equip;
 import npc.skill;
+import data.player;
 
 public class main {
     public static void main(String[] args) throws Exception {
 
         // 數值設定 (回合) / (玩家死亡)
-        int round = 0;
         boolean player_survive = true;
 
         // 設置 物件
@@ -19,8 +17,10 @@ public class main {
         events event = new events();
         mobs mobs = new mobs();
         create create = new create();
+        day day = new day();
         // 初始化/玩家屬性
 
+        int Day = 0;
         // 讀取檔案 確保檔案是否遺失
         create.read();
         while ((boolean) player_survive == true) {
@@ -29,8 +29,17 @@ public class main {
             Scanner start_game_text = new Scanner(System.in);
             String start_game = start_game_text.nextLine();
 
+            // equip.random_npc();
+            // equip.getNPCTalk();
             // 玩家死亡
-            player_survive = false;
+            event.your_name();
+            while (player.HP >= 1) {
+                Day++;
+                System.out.println("今天是第 " + Day + " 天");
+                day.move();
+            }
+            // 巡路 event.Search();
+            // skill.random_npc();
 
             // 死亡是否 重新 or 結束遊戲 輸入
             System.out.println("\n" + "\n" + "你已死亡" + "\n" + "輸入 Y 來重新開始");
@@ -41,6 +50,7 @@ public class main {
                 player_survive = true;
             } else {
                 System.out.println("\n" + "遊戲結束");
+                player_survive = false;
             }
         }
 
