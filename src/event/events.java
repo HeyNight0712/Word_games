@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import data.color;
 import data.monster;
 import data.player;
 import file.equip_shop;
@@ -17,9 +18,10 @@ public class events {
     static String info_move = "移動中";
     static equip_shop equip = new equip_shop();
     static skill_shop skill = new skill_shop();
+    static color color = new color();
 
     mobs mobs = new mobs();
-    attack attack = new attack();
+    att_def combat = new att_def();
     round round = new round();
     String Random;
 
@@ -38,7 +40,7 @@ public class events {
                     System.out.println("不能輸入空白!!" + "請重新輸入");
                     start_name = false;
                 } else {
-                    System.out.println("確認你的名子取名為" + player.name + "?");
+                    System.out.println("確認你的名子取名為 " + player.name + " ?");
                     System.out.println("[ Y / N ]");
                     Scanner your_name_text = new Scanner(System.in);
                     String your_name_use = your_name_text.nextLine();
@@ -47,10 +49,13 @@ public class events {
                         break;
                     } else if (your_name_use.equals("n") || your_name_use.equals("N")) {
                         break;
+                    } else {
+                        System.out.println("輸入錯誤");
                     }
                 }
 
             }
+
         }
     }
 

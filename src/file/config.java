@@ -1,15 +1,12 @@
 package file;
 
 import java.io.File;
-import org.json.simple.JSONObject;
-
+import data.color;
 import data.player;
+import data.lang;
+import file.lang.zh_tw;
 
-import java.io.FileWriter;
 import java.util.concurrent.TimeUnit;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class config {
     static String info_system = "【後台】 ";
@@ -17,37 +14,42 @@ public class config {
     static skill_shop skill = new skill_shop();
     static mobs mobs = new mobs();
     static player player = new player();
+    static zh_tw zh_tw = new zh_tw();
+    static lang lang = new lang();
 
     public static void read() throws Exception {
-        // 這裡之後會歸入 新檔案
         System.out.println("偵測檔案");
         System.out.println("====================");
-        config();
+        config_folder();
+        lang();
+        zh_tw.create_file();
         equip.create_file();
         skill.create_file();
         mobs.create_file();
         player.restart();
+        lang.color_use();
         System.out.println("====================");
-        System.out.println("確認中" + "\n");
         TimeUnit.SECONDS.sleep(1);
         System.out.println("確認完畢" + "\n");
-        // event.Search();
-        // 寫來備註用
-        // 隨機 武器商人 npc / 對話
-        // equip.random_npc();
-        // 隨機抽取生物
-        // mobs.random_npc();
-        // 抽取剛剛生物的 對話 1~4
-        // mobs.getmobTalk();
     }
 
-    private static void config() throws Exception {
+    private static void config_folder() throws Exception {
         File configDir = new File("config");
         if (!configDir.exists()) {
             configDir.mkdir();
             System.out.println(info_system + "- 創建 config");
         } else {
             System.out.println(info_system + "- 讀取 config");
+        }
+    }
+
+    private static void lang() throws Exception {
+        File configDir = new File("lang");
+        if (!configDir.exists()) {
+            configDir.mkdir();
+            System.out.println(info_system + "- 創建 lang");
+        } else {
+            System.out.println(info_system + "- 讀取 lang");
         }
     }
 }

@@ -30,8 +30,8 @@ public class player {
         HP_max = HP;
         MP = 5;
         MP = MP_max;
-        Damage = 3;
-        Hit = 0;
+        Damage = 5;
+        Hit = 1;
         Defense = 1;
         LV = 0;
         EXP = 0;
@@ -43,10 +43,10 @@ public class player {
     public void info() {
         System.out.println("\n" + name + ":");
         System.out.println("----------");
-        System.out.println("HP - " + HP + " / " + HP_max);
-        System.out.println("MP - " + MP + " / " + MP_max);
-        System.out.println("Dam - " + Damage + " (" + Hit + ")");
-        System.out.println("Def - " + Defense);
+        System.out.println(lang.HP + " - " + HP + " / " + HP_max);
+        System.out.println(lang.MP + " - " + MP + " / " + MP_max);
+        System.out.println(lang.Damage + " - " + Damage + " (" + Hit + ")");
+        System.out.println(lang.Defense + " - " + Defense);
         System.out.println("----------");
     }
 }
