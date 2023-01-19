@@ -12,17 +12,18 @@ public class count {
     player player = new player();
 
     public void EXP() throws Exception {
-        player.EXP = monster.EXP + player.EXP;
-        player.Gold = monster.Gold + player.Gold;
+        data.player.EXP = monster.EXP + data.player.EXP;
+        data.player.Gold = monster.Gold + data.player.Gold;
         System.out.println("\n" + "成功擊殺 " + monster.name + " + EXP " + monster.EXP + " + GOLD " + monster.Gold);
         TimeUnit.SECONDS.sleep(1);
-        if (player.EXP >= player.EXP_max) {
-            player.EXP = 0;
-            player.LV++;
-            System.out.println("等級提升" + (player.LV - 1) + " 至 " + player.LV);
+        if (data.player.EXP >= data.player.EXP_max) {
+            data.player.EXP = 0;
+            data.player.LV++;
+            System.out.println("等級提升" + (data.player.LV - 1) + " 至 " + data.player.LV);
         }
         System.out.println(
-                "『" + player.LV + "』" + player.name + ": " + " " + lang.EXP + " " + player.EXP + " / " + player.EXP_max
-                        + " " + lang.GOLD + " " + player.Gold + "\n");
+                "『" + data.player.LV + "』" + data.player.name + ": " + " " + lang.EXP + " " + data.player.EXP + " / "
+                        + data.player.EXP_max
+                        + " " + lang.GOLD + " " + data.player.Gold + "\n");
     }
 }

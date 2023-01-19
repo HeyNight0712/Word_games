@@ -32,8 +32,8 @@ public class mobs {
             mob1.addProperty("MP", 0);
             mob1.addProperty("MP_max", 0);
             mob1.addProperty("Damage", 2);
-            mob1.addProperty("Hit", 0);
-            mob1.addProperty("Defense", 2);
+            mob1.addProperty("Hit", 1);
+            mob1.addProperty("Defense", 3);
             mob1.addProperty("EXP", 5);
             mob1.addProperty("GOLD", 5);
             // mob1隨機對話
@@ -52,7 +52,7 @@ public class mobs {
             mob2.addProperty("MP", 0);
             mob2.addProperty("MP_max", 0);
             mob2.addProperty("Damage", 2);
-            mob2.addProperty("Hit", 0);
+            mob2.addProperty("Hit", 1);
             mob2.addProperty("Defense", 1);
             mob2.addProperty("EXP", 4);
             mob2.addProperty("GOLD", 3);
@@ -72,7 +72,7 @@ public class mobs {
             mob3.addProperty("MP", 10);
             mob3.addProperty("MP_max", 0);
             mob3.addProperty("Damage", 3);
-            mob3.addProperty("Hit", 0);
+            mob3.addProperty("Hit", 1);
             mob3.addProperty("Defense", 2);
             mob3.addProperty("EXP", 8);
             mob3.addProperty("GOLD", 7);
@@ -133,7 +133,7 @@ public class mobs {
         FileReader reader = new FileReader("config/mobs.json");
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
         JsonObject mob = jsonObject.getAsJsonObject("mob" + talktype);
-        monster.name = color.cc + mob.get("name").getAsString() + color.cf;
+        monster.name = mob.get("name").getAsString();
         monster.LV = mob.get("LV").getAsInt();
         monster.HP = mob.get("HP").getAsInt();
         monster.HP_max = monster.HP;

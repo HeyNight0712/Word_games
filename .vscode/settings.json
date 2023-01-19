@@ -2,6 +2,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "src/api/json-simple-1.1.1.jar",
-        "src/api/gson-2.8.2.jar"
+        "src/api/gson-2.8.2.jar",
+        "libs/json-simple-1.1.1.jar",
+        "libs/gson-2.8.2.jar"
     ]
 }

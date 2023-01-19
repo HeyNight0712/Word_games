@@ -18,17 +18,17 @@ public class event_control {
     count count = new count();
     int Day;
 
-    public void event_control() throws Exception {
+    public void event_run() throws Exception {
         while (true) {
             Day++;
             System.out.println("今天是第 " + Day + " 天" + "\n");
             move();
             // 戰鬥 結果畫面
-            while (player.HP >= 1 && monster.HP >= 1) {
+            while (data.player.HP >= 1 && monster.HP >= 1) {
                 round.who();
                 if (monster.HP <= 0) {
                     count.EXP();
-                } else if (player.HP <= 0) {
+                } else if (data.player.HP <= 0) {
                     main.player_survive = false;
                 }
             }

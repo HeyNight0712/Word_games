@@ -21,7 +21,7 @@ public class events {
     static color color = new color();
 
     mobs mobs = new mobs();
-    attack attack = new attack();
+    att_def combat = new att_def();
     round round = new round();
     String Random;
 
@@ -32,7 +32,7 @@ public class events {
             Scanner your_name = new Scanner(System.in);
             System.out.println("請輸入你的名子");
             String player_name = your_name.nextLine();
-            player.name = color.c9 + player_name + color.cf;
+            player.name = player_name;
             boolean start_name = true;
             start_name = true;
             while (start_name) {
@@ -49,10 +49,13 @@ public class events {
                         break;
                     } else if (your_name_use.equals("n") || your_name_use.equals("N")) {
                         break;
+                    } else {
+                        System.out.println("輸入錯誤");
                     }
                 }
 
             }
+
         }
     }
 

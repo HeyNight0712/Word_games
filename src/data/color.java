@@ -1,6 +1,7 @@
 package data;
 
 //顏色代碼
+// bat 不支援
 public class color {
     public static String c0 = "\033[30m"; // 黑色
     public static String cc = "\033[31m"; // 紅色
