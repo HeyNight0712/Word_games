@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import data.lang;
 import data.monster;
 import data.player;
 import data.system_value;
@@ -22,10 +23,13 @@ public class event_control {
             Day++;
             System.out.println("今天是第 " + Day + " 天" + "\n");
             move();
+            // 戰鬥 結果畫面
             while (player.HP >= 1 && monster.HP >= 1) {
                 round.who();
                 if (monster.HP <= 0) {
                     count.EXP();
+                } else if (player.HP <= 0) {
+                    main.player_survive = false;
                 }
             }
             break;
@@ -36,7 +40,7 @@ public class event_control {
     public void move() throws Exception {
         while (true) {
             Scanner player_text = new Scanner(System.in);
-            System.out.println("[1] " + player.name + " [2] 移動" + " [3] 道具");
+            System.out.println("[1] " + player.name + " [2] " + lang.move + " [3] " + lang.item);
             String player_text_use = player_text.nextLine();
             String player_use = player_text_use;
             if (player_use.equals("1")) {

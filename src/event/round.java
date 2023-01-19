@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import data.lang;
 import data.monster;
 import data.player;
 import data.system_value;
@@ -37,12 +38,15 @@ public class round {
 
     // 隨機回合反應
     public void who() throws Exception {
+        TimeUnit.SECONDS.sleep(2);
         if (system_value.round == 0) {
             System.out.println("\n" + "輪到 " + player.name);
+            System.out.println("==========");
             user();
             system_value.round = 1;
         } else if (system_value.round == 1) {
             System.out.println("\n" + "輪到 " + monster.name);
+            System.out.println("==========");
             bot.probability();
             system_value.round = 0;
         } else {
@@ -60,24 +64,26 @@ public class round {
     public void user() throws Exception {
         while (true) {
             Scanner player_text = new Scanner(System.in);
-            System.out.println("[1] 攻擊" + " [2] 防禦" + " [3] 技能" + " [4] 道具" + " [5] 屬性");
+            System.out.println(
+                    "[1] " + lang.attack + " [2] " + lang.defense + " [3] " + lang.skill + " [4] " + lang.item
+                            + " [5] " + lang.Attributes);
             String player_text_use = player_text.nextLine();
             player_use = player_text_use;
             if (player_use.equals("1")) {
-                System.out.println("你使用 攻擊");
+                System.out.println("你使用 " + lang.attack);
                 attack.ATT();
                 break;
             } else if (player_use.equals("2")) {
-                System.out.println("你使用 防禦");
+                System.out.println("你使用 " + lang.defense);
                 break;
             } else if (player_use.equals("3")) {
-                System.out.println("你使用 技能");
+                System.out.println("你使用 " + lang.skill);
                 break;
             } else if (player_use.equals("4")) {
-                System.out.println("你使用 道具");
+                System.out.println("你使用 " + lang.item);
                 continue;
             } else if (player_use.equals("5")) {
-                System.out.println("你使用 屬性");
+                System.out.println("你使用 " + lang.Attributes);
                 use_Attributes();
                 continue;
             } else {
@@ -93,30 +99,14 @@ public class round {
         String player_text_use = player_text.nextLine();
         player_use = player_text_use;
         if (player_use.equals("1")) {
-            System.out.println("你正在查看自己");
+            System.out.println("你正在查看" + player.name);
             player.info();
         } else if (player_use.equals("2")) {
-            System.out.println("你正在查看對方");
+            System.out.println("你正在查看" + monster.name);
             mob.info();
         } else {
             System.out.println("回到上一步");
         }
         TimeUnit.SECONDS.sleep(1);
     }
-
-    // 獲取資料
-    public void getinfo() throws Exception {
-        if (system_value.round == 0) {
-            System.out.println(monster.name + ":");
-            System.out.println("----------");
-            System.out.println("HP - " + monster.HP + " / " + monster.HP_max);
-            System.out.println("MP - " + monster.MP + " / " + monster.MP_max);
-            System.out.println("Dam - " + monster.Damage + " (" + monster.Hit + ")");
-            System.out.println("Def - " + monster.Defense);
-            system_value.round = 1;
-        } else if (system_value.round == 1) {
-
-        }
-    }
-
 }

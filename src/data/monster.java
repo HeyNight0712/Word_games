@@ -24,10 +24,10 @@ public class monster {
     public void info() {
         System.out.println("\n" + name + ":");
         System.out.println("----------");
-        System.out.println("HP - " + HP + " / " + HP_max);
-        System.out.println("MP - " + MP + " / " + MP_max);
-        System.out.println("Dam - " + Damage + " (" + Hit + ")");
-        System.out.println("Def - " + Defense);
+        System.out.println(lang.HP + " - " + HP + " / " + HP_max);
+        System.out.println(lang.MP + " - " + MP + " / " + MP_max);
+        System.out.println(lang.Damage + " - " + Damage + " (" + Hit + ")");
+        System.out.println(lang.Defense + " - " + Defense);
         System.out.println("----------");
     }
 }

@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import com.google.gson.JsonObject;
 
+import data.color;
 import data.monster;
 
 import java.util.Random;
@@ -126,32 +127,13 @@ public class mobs {
         System.out.println("----------");
     }
 
-    // mob 圖鑑
-    public void getmobInfo() throws Exception {
-        // Gson gson = new Gson();
-        // FileReader reader = new FileReader("config/mobs.json");
-        // JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-        // JsonObject player = jsonObject.getAsJsonObject("mob" + talktype);
-        // String name = player.get("name").getAsString();
-        System.out.println(monster.name + ":");
-        System.out.println("----------");
-        System.out.println("HP - " + monster.HP + " / " + monster.HP_max);
-        System.out.println("MP - " + monster.MP + " / " + monster.MP_max);
-        System.out.println("Dam - " + monster.Damage + " (" + monster.Hit + ")");
-        System.out.println("Def - " + monster.Defense);
-        // 獲得金幣
-        System.out.println("Gold - " + monster.Gold);
-        System.out.println("EXP - " + monster.EXP);
-        System.out.println("----------");
-    }
-
     // 讀取 mob數值
     public void getmobdata() throws Exception {
         Gson gson = new Gson();
         FileReader reader = new FileReader("config/mobs.json");
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
         JsonObject mob = jsonObject.getAsJsonObject("mob" + talktype);
-        monster.name = mob.get("name").getAsString();
+        monster.name = color.cc + mob.get("name").getAsString() + color.cf;
         monster.LV = mob.get("LV").getAsInt();
         monster.HP = mob.get("HP").getAsInt();
         monster.HP_max = monster.HP;

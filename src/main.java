@@ -9,10 +9,11 @@ import file.mobs;
 import file.skill_shop;
 
 public class main {
+    static boolean player_survive = true;
+
     public static void main(String[] args) throws Exception {
 
         // 數值設定 (回合) / (玩家死亡)
-        boolean player_survive = true;
 
         // 設置 物件
         equip_shop equip = new equip_shop();
