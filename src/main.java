@@ -21,7 +21,6 @@ public class main {
             System.out.println("\n" + "\n" + "點擊 ENTER 來開始遊戲");
             Scanner start_game_text = new Scanner(System.in);
             String start_game = start_game_text.nextLine();
-
             // 核心
             event.your_name();
             while (player.HP >= 1) {
