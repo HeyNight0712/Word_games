@@ -1,49 +1,35 @@
+package main;
+
 import java.util.Scanner;
 
 import data.player;
-import event.events;
-import event.round;
-import file.config;
-import file.equip_shop;
-import file.mobs;
-import file.skill_shop;
+import data.system_value;
+import discord.data.data;
+import event.player.control;
+import event.set.load;
 
 public class main {
     static boolean player_survive = true;
 
     public static void main(String[] args) throws Exception {
-
-        // 數值設定 (回合) / (玩家死亡)
-
-        // 設置 物件
-        equip_shop equip = new equip_shop();
-        skill_shop skill = new skill_shop();
-        events event = new events();
-        mobs mobs = new mobs();
-        config create = new config();
-        round round = new round();
-        event_control event_control = new event_control();
+        load load = new load();
+        control event_control = new control();
+        system_value set = new system_value();
+        player player = new player();
         // 初始化/玩家屬性
 
-        int Day = 0;
         // 讀取檔案 確保檔案是否遺失
-        create.read();
+        load.read();
+        // run
         while ((boolean) player_survive == true) {
-            // 開始遊戲 輸入
             System.out.println("\n" + "\n" + "點擊 ENTER 來開始遊戲");
             Scanner start_game_text = new Scanner(System.in);
             String start_game = start_game_text.nextLine();
-
-            // equip.random_npc();
-            // equip.getNPCTalk();
-            // 玩家死亡
-            event.your_name();
+            // 核心
+            event.events.your_name();
             while (player.HP >= 1) {
-                event_control.event_control();
-                // round.move();
+                event_control.event_run();
             }
-            // 巡路 event.Search();
-            // skill.random_npc();
 
             // 死亡是否 重新 or 結束遊戲 輸入
             System.out.println("\n" + "\n" + "你已死亡" + "\n" + "輸入 Y 來重新開始");

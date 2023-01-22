@@ -7,19 +7,17 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import com.google.gson.JsonObject;
 
-import data.color;
 import data.monster;
 
 import java.util.Random;
 
 public class mobs {
-    static String info_system = "【後台】 ";
 
     // 讀取是否有檔案
-    public void create_file() throws Exception {
+    public static void create_file() throws Exception {
         File equipJson = new File("config/mobs.json");
         if (!equipJson.exists()) {
-            // 創建 檔案數據
+            // 寫入 檔案數據
             JsonObject obj = new JsonObject();
 
             // 預設列表
@@ -32,8 +30,8 @@ public class mobs {
             mob1.addProperty("MP", 0);
             mob1.addProperty("MP_max", 0);
             mob1.addProperty("Damage", 2);
-            mob1.addProperty("Hit", 0);
-            mob1.addProperty("Defense", 2);
+            mob1.addProperty("Hit", 1);
+            mob1.addProperty("Defense", 3);
             mob1.addProperty("EXP", 5);
             mob1.addProperty("GOLD", 5);
             // mob1隨機對話
@@ -52,7 +50,7 @@ public class mobs {
             mob2.addProperty("MP", 0);
             mob2.addProperty("MP_max", 0);
             mob2.addProperty("Damage", 2);
-            mob2.addProperty("Hit", 0);
+            mob2.addProperty("Hit", 1);
             mob2.addProperty("Defense", 1);
             mob2.addProperty("EXP", 4);
             mob2.addProperty("GOLD", 3);
@@ -72,7 +70,7 @@ public class mobs {
             mob3.addProperty("MP", 10);
             mob3.addProperty("MP_max", 0);
             mob3.addProperty("Damage", 3);
-            mob3.addProperty("Hit", 0);
+            mob3.addProperty("Hit", 1);
             mob3.addProperty("Defense", 2);
             mob3.addProperty("EXP", 8);
             mob3.addProperty("GOLD", 7);
@@ -86,26 +84,26 @@ public class mobs {
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String jsonData = gson.toJson(obj);
-            // write to file
+            // 寫入 文件
             FileWriter writer = new FileWriter(equipJson);
             writer.write(jsonData);
             writer.close();
-            System.out.println(info_system + "- 創建 生物_mobs");
+            System.out.println(data.text.info_system + "- 寫入 生物_mobs");
         } else {
-            System.out.println(info_system + "- 讀取 生物_mobs");
+            System.out.println(data.text.info_system + "- 讀取 生物_mobs");
         }
         // getNPC1Talk();
         // getNPC2Talk();
         // getNPC3Talk();
     }
 
-    int talktype;
+    static int talktype;
     // 未實施
     int talktype_use;
 
     // 隨機NPC
     // 對話 + 讀取 data
-    public void random_npc() throws Exception {
+    public static void random_npc() throws Exception {
         Random rand = new Random();
         talktype = rand.nextInt(3) + 1;
         getmobdata();
@@ -128,12 +126,12 @@ public class mobs {
     }
 
     // 讀取 mob數值
-    public void getmobdata() throws Exception {
+    public static void getmobdata() throws Exception {
         Gson gson = new Gson();
         FileReader reader = new FileReader("config/mobs.json");
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
         JsonObject mob = jsonObject.getAsJsonObject("mob" + talktype);
-        monster.name = color.cc + mob.get("name").getAsString() + color.cf;
+        monster.name = mob.get("name").getAsString();
         monster.LV = mob.get("LV").getAsInt();
         monster.HP = mob.get("HP").getAsInt();
         monster.HP_max = monster.HP;

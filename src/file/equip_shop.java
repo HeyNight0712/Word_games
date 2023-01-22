@@ -4,18 +4,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileReader;
 import com.google.gson.JsonObject;
-import java.util.Random;
 
 public class equip_shop {
-    static String info_system = "【後台】 ";
 
     // 讀取是否有檔案
-    public void create_file() throws Exception {
+    public static void create_file() throws Exception {
         File equipJson = new File("config/equip_npc.json");
         if (!equipJson.exists()) {
-            // 創建 檔案數據
+            // 寫入 檔案數據
             JsonObject obj = new JsonObject();
 
             // 以下由 好想想蜘蛛 給予 "D
@@ -47,39 +44,13 @@ public class equip_shop {
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String jsonData = gson.toJson(obj);
-            // write to file
+            // 寫入 文件
             FileWriter writer = new FileWriter(equipJson);
             writer.write(jsonData);
             writer.close();
-            System.out.println(info_system + "- 創建 商人_NPC");
+            System.out.println(data.text.info_system + "- 寫入 商人_NPC");
         } else {
-            System.out.println(info_system + "- 讀取 商人_NPC");
+            System.out.println(data.text.info_system + "- 讀取 商人_NPC");
         }
-        // getNPC1Talk();
-        // getNPC2Talk();
-        // getNPC3Talk();
-    }
-
-    int talktype;
-
-    // 隨機NPC
-    public void random_npc() throws Exception {
-        Random rand = new Random();
-        talktype = rand.nextInt(3) + 1;
-        getNPCTalk();
-    }
-
-    // NPC1 隨機對話
-    public void getNPCTalk() throws Exception {
-        Gson gson = new Gson();
-        FileReader reader = new FileReader("config/equip_npc.json");
-        JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-        JsonObject player = jsonObject.getAsJsonObject("NPC" + talktype);
-        String name = player.get("name").getAsString();
-        System.out.println("----------");
-        int talkNumber = new Random().nextInt(4) + 1;
-        String talk = player.get("talk" + talkNumber).getAsString();
-        System.out.println(name + ": " + talk);
-        System.out.println("----------");
     }
 }

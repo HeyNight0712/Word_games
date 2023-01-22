@@ -8,9 +8,8 @@ import data.lang;
 import data.monster;
 import data.player;
 import data.system_value;
-import file.boss;
-import file.config;
-import data.system_value;
+import event.fighting.att_def;
+import event.fighting.bot.bot;
 
 //計算回合 /天數
 public class round {
@@ -18,7 +17,7 @@ public class round {
     player player = new player();
     monster mob = new monster();
     system_value system_value = new system_value();
-    bot bot = new bot();
+    static bot bot = new bot();
     // 未實施
     public static int Day;
 
@@ -27,28 +26,28 @@ public class round {
 
     public static int Round_ATT;
 
-    String player_use;
+    static String player_use;
 
     // 隨機回合
-    public void round_set() throws Exception {
+    public static void round_set() throws Exception {
         Random rand = new Random();
-        system_value.round = rand.nextInt(2);
+        data.system_value.round = rand.nextInt(2);
         who();
     }
 
     // 隨機回合反應
-    public void who() throws Exception {
+    public static void who() throws Exception {
         TimeUnit.SECONDS.sleep(2);
-        if (system_value.round == 0) {
-            System.out.println("\n" + "輪到 " + player.name);
+        if (data.system_value.round == 0) {
+            System.out.println("\n" + "輪到 " + data.player.name);
             System.out.println("==========");
             user();
-            system_value.round = 1;
-        } else if (system_value.round == 1) {
+            data.system_value.round = 1;
+        } else if (data.system_value.round == 1) {
             System.out.println("\n" + "輪到 " + monster.name);
             System.out.println("==========");
             bot.probability();
-            system_value.round = 0;
+            data.system_value.round = 0;
         } else {
             System.out.println("回合錯誤 請回報!!!");
         }
@@ -58,23 +57,26 @@ public class round {
         who();
     }
 
-    attack attack = new attack();
+    static att_def combat = new att_def();
+
+    public static String player_text_use = "0";
 
     // 戰鬥 屬性
-    public void user() throws Exception {
+    public static void user() throws Exception {
         while (true) {
             Scanner player_text = new Scanner(System.in);
             System.out.println(
                     "[1] " + lang.attack + " [2] " + lang.defense + " [3] " + lang.skill + " [4] " + lang.item
                             + " [5] " + lang.Attributes);
-            String player_text_use = player_text.nextLine();
+            player_text_use = player_text.nextLine();
             player_use = player_text_use;
             if (player_use.equals("1")) {
                 System.out.println("你使用 " + lang.attack);
-                attack.ATT();
+                combat.ATT();
                 break;
             } else if (player_use.equals("2")) {
                 System.out.println("你使用 " + lang.defense);
+                combat.ATT();
                 break;
             } else if (player_use.equals("3")) {
                 System.out.println("你使用 " + lang.skill);
@@ -93,17 +95,17 @@ public class round {
     }
 
     // 查看
-    public void use_Attributes() throws Exception {
+    public static void use_Attributes() throws Exception {
         Scanner player_text = new Scanner(System.in);
-        System.out.println("[1] " + player.name + " [2] " + monster.name);
+        System.out.println("[1] " + data.player.name + " [2] " + monster.name);
         String player_text_use = player_text.nextLine();
         player_use = player_text_use;
         if (player_use.equals("1")) {
-            System.out.println("你正在查看" + player.name);
-            player.info();
+            System.out.println("你正在查看" + data.player.name);
+            data.player.info();
         } else if (player_use.equals("2")) {
             System.out.println("你正在查看" + monster.name);
-            mob.info();
+            data.monster.info();
         } else {
             System.out.println("回到上一步");
         }

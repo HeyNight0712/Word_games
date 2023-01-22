@@ -1,3 +1,5 @@
+package event.player;
+
 import java.util.Scanner;
 
 import data.lang;
@@ -8,7 +10,7 @@ import event.events;
 import event.round;
 
 //全部事件核心控制
-public class event_control {
+public class control {
     // 匯入物件
     system_value system_value = new system_value();
     events events = new events();
@@ -18,18 +20,18 @@ public class event_control {
     count count = new count();
     int Day;
 
-    public void event_control() throws Exception {
+    public void event_run() throws Exception {
         while (true) {
             Day++;
             System.out.println("今天是第 " + Day + " 天" + "\n");
             move();
             // 戰鬥 結果畫面
-            while (player.HP >= 1 && monster.HP >= 1) {
+            while (data.player.HP >= 1 && monster.HP >= 1) {
                 round.who();
                 if (monster.HP <= 0) {
                     count.EXP();
-                } else if (player.HP <= 0) {
-                    main.player_survive = false;
+                } else if (data.player.HP <= 0) {
+                    // 修改
                 }
             }
             break;

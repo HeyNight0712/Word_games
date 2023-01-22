@@ -1,10 +1,12 @@
 package data;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import discord.start;
 
 public class lang {
     public static String HP;
@@ -24,25 +26,24 @@ public class lang {
     public static String Attributes;
     public static String defense;
 
-    public void color_use() throws Exception {
+    public static void lang_use() throws Exception {
         lang_use = "zh_tw";
         Gson gson = new Gson();
         FileReader reader = new FileReader("lang/" + lang_use + ".json");
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
         JsonObject player = jsonObject.getAsJsonObject(lang_use);
-        HP = color.cc + player.get("HP").getAsString() + color.cf;
-        MP = color.c1 + player.get("MP").getAsString() + color.cf;
-        Damage = color.c9 + player.get("Dam").getAsString() + color.cf;
-        Defense = color.c9 + player.get("Def").getAsString() + color.cf;
-        EXP = color.ca + player.get("EXP").getAsString() + color.cf;
-        GOLD = color.ce + player.get("GOLD").getAsString() + color.cf;
-        LV = LV;
-        move = color.cf + player.get("move").getAsString() + color.cf;
-        item = color.c5 + player.get("item").getAsString() + color.cf;
-        attack = color.cc + player.get("attack").getAsString() + color.cf;
-        skill = color.c1 + player.get("skill").getAsString() + color.cf;
-        Attributes = color.ca + player.get("Attributes").getAsString() + color.cf;
-        defense = color.c9 + player.get("defense").getAsString() + color.cf;
+        HP = player.get("HP").getAsString();
+        MP = player.get("MP").getAsString();
+        Damage = player.get("Dam").getAsString();
+        Defense = player.get("Def").getAsString();
+        EXP = player.get("EXP").getAsString();
+        GOLD = player.get("GOLD").getAsString();
+        move = player.get("move").getAsString();
+        item = player.get("item").getAsString();
+        attack = player.get("attack").getAsString();
+        skill = player.get("skill").getAsString();
+        Attributes = player.get("Attributes").getAsString();
+        defense = player.get("defense").getAsString();
 
     }
 }
