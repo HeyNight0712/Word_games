@@ -21,10 +21,8 @@ public class player {
 
     public static int Gold;
 
-    static String info_system = "【後台】 ";
-
-    public void restart() {
-        System.out.println(info_system + "- 初始化 玩家屬性");
+    public static void restart() {
+        System.out.println(text.info_system + "- 初始化 玩家屬性");
         name = "None";
         HP = 20;
         HP_max = HP;
@@ -40,7 +38,7 @@ public class player {
     }
 
     // 屬性輸出
-    public void info() {
+    public static void info() {
         System.out.println("\n" + name + ":");
         System.out.println("----------");
         System.out.println(lang.HP + " - " + HP + " / " + HP_max);

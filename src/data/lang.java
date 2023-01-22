@@ -1,9 +1,12 @@
 package data;
 
 import java.io.FileReader;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import discord.start;
 
 public class lang {
     public static String HP;
@@ -23,7 +26,7 @@ public class lang {
     public static String Attributes;
     public static String defense;
 
-    public void color_use() throws Exception {
+    public static void lang_use() throws Exception {
         lang_use = "zh_tw";
         Gson gson = new Gson();
         FileReader reader = new FileReader("lang/" + lang_use + ".json");

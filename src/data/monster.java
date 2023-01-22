@@ -21,7 +21,7 @@ public class monster {
     public static int Gold;
 
     // 屬性輸出
-    public void info() {
+    public static void info() {
         System.out.println("\n" + name + ":");
         System.out.println("----------");
         System.out.println(lang.HP + " - " + HP + " / " + HP_max);
